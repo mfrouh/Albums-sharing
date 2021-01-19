@@ -25,8 +25,9 @@ class AlbumController extends Controller
        return view('backend.albums.index',compact('albums'));
     }
 
-    public function destroy(Album $album)
+    public function destroy($id)
     {
+       $album=Album::findOrfail($id); 
        $album->delete();
        return back();
     }
