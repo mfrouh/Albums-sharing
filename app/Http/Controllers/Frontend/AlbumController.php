@@ -139,6 +139,7 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
+        $album->gallery()->delete();
         Storage::deleteDirectory('public/albums/'.$album->id);
         $album->delete();
         return response()->json('Album Deleted Successfully');
