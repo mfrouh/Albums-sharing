@@ -3,14 +3,14 @@
 <div class="row albums">
     @forelse ($albums as $album)
     <div class="col-md-4">
-        <div class="card wow fadeInUp album" data-id="{{$album->id}}" data-wow-duration="0.5s" data-wow-delay="0.5s">
+        <div class="card wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
             <div class="card-header">
              @if ($album->image)
-                <img src="{{asset($album->image)}}" class="lazyload">
+                <img src="{{asset($album->image)}}" class="lazyload album" data-id="{{$album->id}}">
                 <a href="javascript:void(0);" class="btn btn-danger btn-sm delete" data-id="{{$album->id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 <a href="/album/{{$album->id}}/edit" class="btn btn-primary btn-sm "><i class="fa fa-edit" aria-hidden="true"></i></a>
              @else
-                <img src="{{asset('images/demo1.png')}}" class="lazyload">
+                <img src="{{asset('images/demo1.png')}}" class="lazyload album" data-id="{{$album->id}}">
                 <a href="javascript:void(0);" class="btn btn-danger btn-sm delete" data-id="{{$album->id}}"><i class="fa fa-trash" aria-hidden="true"></i></a>
                 <a href="/album/{{$album->id}}/edit" class="btn btn-primary btn-sm "><i class="fa fa-edit" aria-hidden="true"></i></a>
              @endif
@@ -78,7 +78,7 @@ $('.more').click(function(e){
                   '<div class="col-md-4">'+
                     '<div class="card wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">'+
                     '<div class="card-header">'+
-                    '<img src="/'+element.image+'" class="lazyload">'+
+                    '<img src="/'+element.image+'" class="lazyload album" data-id="'+element.id+'">'+
                     '<a href="javascript:void(0);" class="btn btn-danger btn-sm delete" data-id="'+element.id+'"><i class="fa fa-trash" aria-hidden="true"></i></a>'+
                     '<a href="/album/'+element.id+'/edit" class="btn btn-primary btn-sm" data-id="'+element.id+'"><i class="fa fa-edit" aria-hidden="true"></i></a>'+
                     '</div>'+

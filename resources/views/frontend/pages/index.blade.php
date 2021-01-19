@@ -4,12 +4,12 @@
   <div class="row albums">
       @forelse ($albums as $album)
       <div class="col-md-4">
-          <div class="card wow fadeInUp album" data-id="{{$album->id}}" data-wow-duration="0.5s" data-wow-delay="0.5s">
+          <div class="card wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
               <div class="card-header">
                   @if ($album->image)
-                     <img src="{{asset($album->image)}}" class="lazyload">
+                     <img src="{{asset($album->image)}}" class="lazyload album" data-id="{{$album->id}}">
                   @else
-                     <img src="{{asset('images/demo1.png')}}" class="lazyload">
+                     <img src="{{asset('images/demo1.png')}}" class="lazyload album" data-id="{{$album->id}}">
                   @endif
               </div>
               <div class="card-body">
@@ -76,7 +76,7 @@ $('.more').click(function(e){
                   '<div class="col-md-4">'+
                     '<div class="card wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">'+
                     '<div class="card-header">'+
-                    '<img src="/'+element.image+'" class="lazyload">'+
+                    '<img src="/'+element.image+'" class="lazyload album" data-id="'+element.id+'">'+
                     '</div>'+
                    ' <div class="card-body">'+
                       '<h6> <a href="javascript:void(0);">'+element.name+'</a></h6>'+
