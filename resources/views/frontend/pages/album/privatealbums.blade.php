@@ -102,7 +102,7 @@ $('.more').click(function(e){
         }
     });
 });
-$('.delete').click(function(e){
+$('.albums').on('click','.delete',function(e){
     e.preventDefault();
     var el = $(this);
    var id=$(this).attr('data-id');
@@ -116,7 +116,7 @@ $('.delete').click(function(e){
     });
 
 });
-$('.album').click(function(e){
+$('.albums').on('click','.album',function(e){
     var id=$(this).attr('data-id');
     $.ajax({
         type: "get",

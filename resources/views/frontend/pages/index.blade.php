@@ -98,7 +98,7 @@ $('.more').click(function(e){
         }
     });
 });
-$('.album').click(function(e){
+$('.albums').on('click','.album',function(e){
     var id=$(this).attr('data-id');
     $.ajax({
         type: "get",
