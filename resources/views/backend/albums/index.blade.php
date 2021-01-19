@@ -42,7 +42,7 @@ Albums
                                  <td>{{$album->name}}</td>
                                  <td>{{$album->user->name}}</td>
                                  <td>{{$album->type}}</td>
-								 <td><a class="btn btn-success btn-sm album" data-id='{{$album->id}}'><i class="fa fa-eye" aria-hidden="true"></i></a></td>
+								 <td><a class="btn btn-success btn-sm album" href="javascript:void(0);" data-id='{{$album->id}}'><i class="fa fa-eye" aria-hidden="true"></i></a></td>
                                  <td>{{$album->gallery->count()}}</td>
  								<td>
                                      <a class="btn btn-danger btn-sm"  href="/albums/{{$album->id}}"
