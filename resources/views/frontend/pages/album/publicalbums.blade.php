@@ -59,6 +59,11 @@
 @endsection
 @section('js')
 <script>
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
 $('.more').click(function(e){
     e.preventDefault();
     $('.more').text('loading...');
