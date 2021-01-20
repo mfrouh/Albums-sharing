@@ -129,10 +129,9 @@ $('.albums').on('click','.album',function(e){
         url: "/getgallery/"+id,
         dataType: "json",
         success: function (response) {
+        if(response.length != 0)
+        {
             $('#galleryalbums').modal('toggle');
-
-            if(response.length != 0)
-            {
             var images='';
             var cr='';
             $.each(response, function(index, value) {
@@ -144,11 +143,11 @@ $('.albums').on('click','.album',function(e){
                   active='';
                 }
                 images+=
-             '<div class="carousel-item '+active+' ">'+
-                '<img class="d-block w-100" height="400px" src="'+value.url+'">'+
-             '</div>'
-             });
-             $.each(response, function(index, value) {
+                   '<div class="carousel-item '+active+' ">'+
+                      '<img class="d-block w-100" height="400px" src="'+value.url+'">'+
+                   '</div>'
+            });
+            $.each(response, function(index, value) {
                 var active='';
                 if(index==0)
                 {
@@ -157,13 +156,9 @@ $('.albums').on('click','.album',function(e){
                   active='';
                 }
                 cr+='<li data-target="#carouselExampleIndicators" data-slide-to="'+index+'" class="'+active+'"></li>'
-             });
+            });
              $('.carousel-indicators').html(cr);
              $('.carousel-inner').html(images);
-        }
-        else
-        {
-            $('.modal-body').html('<p class="bg-danger">Not Found Image</p>');
         }
         }
     });
