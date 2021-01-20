@@ -24,10 +24,6 @@ class Album extends Model
     {
         return $this->morphMany('App\Models\Image','imageable');
     }
-    public function image()
-    {
-        return $this->morphone('App\Models\Image','imageable');
-    }
 
     public function ScopePublic($q)
     {
@@ -40,7 +36,7 @@ class Album extends Model
     }
     public function getImageAttribute()
     {
-        return $this->gallery()->count()!=0 ? $this->image()->pluck('url')[0]:'images/demo1.png';
+        return $this->gallery()->count()!=0 ? $this->gallery()->pluck('url')[0]:'images/demo1.png';
     }
 
 }

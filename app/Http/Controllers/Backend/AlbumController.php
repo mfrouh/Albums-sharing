@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use App\Models\Album;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AlbumController extends Controller
 {
@@ -27,7 +28,9 @@ class AlbumController extends Controller
 
     public function destroy($id)
     {
-       $album=Album::findOrfail($id); 
+       $album=Album::findOrfail($id);
+       $album->gallery()->delete();
+       Storage::deleteDirectory('public/albums/'.$album->id);
        $album->delete();
        return back();
     }

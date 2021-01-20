@@ -103,7 +103,10 @@ class AlbumController extends Controller
      */
     public function edit(Album $album)
     {
-        return view('frontend.pages.album.edit',compact('album'));
+        if ($album->user_id==auth()->user()->id) {
+           return view('frontend.pages.album.edit',compact('album'));
+        }
+        return abort('403');
     }
 
     /**
@@ -139,10 +142,13 @@ class AlbumController extends Controller
      */
     public function destroy(Album $album)
     {
-        $album->gallery()->delete();
-        Storage::deleteDirectory('public/albums/'.$album->id);
-        $album->delete();
-        return response()->json('Album Deleted Successfully');
+        if ($album->user_id==auth()->user()->id) {
+            $album->gallery()->delete();
+            Storage::deleteDirectory('public/albums/'.$album->id);
+            $album->delete();
+            return response()->json('Album Deleted Successfully');
+       }
+       return abort('403');
     }
     public function image($id)
     {
