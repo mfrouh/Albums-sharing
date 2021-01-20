@@ -3,8 +3,8 @@
 <div class="container">
   <div class="row albums">
       @forelse ($albums as $album)
-      <div class="col-md-4">
-          <div class="card wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
+      <div class="col-md-4 col-sm-6">
+        <div class="card wow fadeInUp" data-wow-duration="0.5s" data-wow-delay="0.5s">
               <div class="card-header">
                   @if ($album->image)
                      <img src="{{asset($album->image)}}" class="lazyload album" data-id="{{$album->id}}">
