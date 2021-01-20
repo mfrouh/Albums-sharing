@@ -106,6 +106,9 @@ $('.albums').on('click','.album',function(e){
         dataType: "json",
         success: function (response) {
             $('#galleryalbums').modal('toggle');
+
+            if(response.length != 0)
+            {
             var images='';
             var cr='';
             $.each(response, function(index, value) {
@@ -133,6 +136,11 @@ $('.albums').on('click','.album',function(e){
              });
              $('.carousel-indicators').html(cr);
              $('.carousel-inner').html(images);
+        }
+        else
+        {
+            $('.modal-body').html('<p class="bg-danger">Not Found Image</p>');
+        }
         }
     });
 });
